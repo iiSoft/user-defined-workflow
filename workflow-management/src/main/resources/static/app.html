@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="workflowManagement">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="bootstrap.css" rel="stylesheet" />
+	<link href="bootstrap-theme.css" rel="stylesheet" />
+	<script src="angular.js"></script>
+	<script>
+		angular.module("workflowManagement", []);
+	</script>
+
+	<script src="controllers/workflowManagement.js"></script>
+</head>
+
+<body ng-controller="workflowManageCtrl">
+	<div class="navbar">
+		<a class="navbar-brand" href="#">Workflow Management</a>
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a href="#">流程</a>
+			</li>
+			<li><a href="#">任务</a></li>
+			<li><a href="#">管理</a></li>
+		</ul>
+		<cart-summary>
+	</div>
+	<div class="alert alert-danger" ng-show="data.error">
+		Error ({{data.error.status}}). The product data was not loaded.
+		<a href="/app.html" class="alert-link">Click here to try again</a>
+	</div>
+	<div class="panel panel-default row">
+		<div class="col-xs-3">
+			<button class="btn btn-link" ng-click="newModel()">new model</button>
+			<div ng-repeat="model in data.models">
+				<a class="btn">{{model.name}}</a>
+				<span class="lead">(id={{model.id}})</span>
+			</div>
+		</div>
+		<div class="col-xs-8">
+			Model details
+		</div>
+	</div>
+	<ng-view />
+</body>
