@@ -27,6 +27,6 @@ KISBPM.URL = {
         return "editor-app/resdata/stencilset.json";
     },
     putModel: function(modelId) {
-        return 'model/' + modelId + '/save';
+        return 'http://localhost:8001/editor/models/' + modelId;
     }
 };

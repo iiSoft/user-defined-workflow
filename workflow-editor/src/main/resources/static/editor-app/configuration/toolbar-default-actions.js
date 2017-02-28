@@ -378,6 +378,7 @@ var SaveModelCtrl = [ '$rootScope', '$scope', '$http', '$route', '$location',
         // Update
         $http({    method: 'POST',
             data: params,
+            withCredentials: true,
             ignoreErrors: true,
             headers: {'Accept': 'application/json',
                       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},

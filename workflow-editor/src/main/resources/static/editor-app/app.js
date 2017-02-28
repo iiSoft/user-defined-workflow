@@ -52,7 +52,6 @@ activitiModeler
 
         // remember language
         $translateProvider.useCookieStorage();
-
   }])
   .run(['$rootScope', '$timeout', '$modal', '$translate', '$location', '$window', '$http', '$q',
         function($rootScope, $timeout, $modal, $translate, $location, $window, $http, $q) {
