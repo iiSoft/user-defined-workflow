@@ -3,6 +3,7 @@ package com.xicoder.workflow.manage.config;
 import org.apache.http.HttpHost;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,5 +25,7 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
         HttpHost host = new HttpHost("localhost", 8001, "http");
         restTemplate = new RestTemplate(
           new HttpComponentsClientHttpRequestFactoryBasicAuth(host));
+        // 自己添加
+        restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("admin", "admin"));
     }
 }
