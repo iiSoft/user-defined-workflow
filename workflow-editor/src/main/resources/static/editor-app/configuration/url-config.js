@@ -20,7 +20,8 @@ var KISBPM = KISBPM || {};
 KISBPM.URL = {
     getModel: function(modelId) {
         // return ACTIVITI.CONFIG.contextRoot + '/model/' + modelId + '/json';
-        return "editor-app/resdata/demo.json";
+//        return "editor-app/resdata/demo.json";
+    	return 'http://localhost:8001/editor/models/' + modelId;
     },
     getStencilSet: function() {
         // return ACTIVITI.CONFIG.contextRoot + '/editor/stencilset?version=' + Date.now();

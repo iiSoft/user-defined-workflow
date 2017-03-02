@@ -10,3 +10,9 @@
 * 类路径文件变化导致项目重启  
   这是因为spring-boot-devtools的特点，将文件放到public或者static文件夹即可。详见spring-boot-reference.pdf。
 
+# 1.2 专题
+* multipart/form-data的实现
+  java可以使用基础的RestTemplete，angularJS使用$http服务。注意目前两者间的一个重要区别是java版本实现需要一个中间的fileResource，为此建立了一个临时文件，angularJS版本只用一个Blob对象替代file。详见 `com.xicoder.workflow.manage.rest.editor.Models.java`和`workflowManagement.js`中的实现。  
+  有空深入研究file，blob，byte[]等的细节区别。
+* 关于drools在spring-boot项目中的应用  
+  参考：[A minimal Spring Boot Drools web service](https://scattercode.co.uk/2015/02/06/a-minimal-spring-boot-drools-web-service/)
