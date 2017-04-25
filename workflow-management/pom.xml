@@ -1,51 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.xicoder</groupId>
-	<artifactId>workflow-management</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0-SNAPSHOT</version>
-	<name>workflow-management</name>
-	<url>http://maven.apache.org</url>
 
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sctrcd</groupId>
+	<artifactId>buspass-ws</artifactId>
+	<name>Bus pass web service</name>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<description>
+		An experiment in building a Drools web service with minimal code.
+		Based on the JBPM project bus pass example.
+	</description>
+
+	<organization>
+		<name>Scattercode Ltd</name>
+		<url>http://www.scattercode.co.uk/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>richardmars</id>
+			<name>Richard Mars</name>
+			<email>richardmars92@gmail.com</email>
+			<organization>Wuhan University of Technology</organization>
+		</developer>
+	</developers>
 
 	<properties>
-		<java.version>1.7</java.version>
-		<activiti.version>5.19.0</activiti.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<kie.version>6.1.0.Final</kie.version>
+		<activiti.version>5.19.0</activiti.version>
+		<java.version>1.7</java.version>
 	</properties>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
-	</parent>
+
+	<!-- Transitively bring in the Spring IO Platform Bill-of-Materials `pom.xml` -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.spring.platform</groupId>
+				<artifactId>platform-bom</artifactId>
+				<version>Athens-SR4</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-web</artifactId> 
-			</dependency> -->
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-actuator</artifactId> 
-			</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-ci</artifactId>
+			<version>${kie.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-spring-boot-starter-basic</artifactId>
@@ -61,6 +92,7 @@
 			<artifactId>activiti-json-converter</artifactId>
 			<version>${activiti.version}</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -69,20 +101,10 @@
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
 		</dependency>
- 		<dependency>
-			<groupId>org.kie</groupId>
-			<artifactId>kie-ci</artifactId>
-			<version>${kie.version}</version>
-		</dependency>
 
-<!-- 		<dependency>
-			<groupId>com.github.jonashackt</groupId>
-			<artifactId>spring-boot-starter-drools</artifactId>
-			<version>-SNAPSHOT</version>
-		</dependency> -->
 	</dependencies>
-
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -97,15 +119,13 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
+				<artifactId>maven-eclipse-plugin</artifactId>
 				<configuration>
-					<archive>
-						<addMavenDescriptor>true</addMavenDescriptor>
-					</archive>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>workflow-management</finalName>
 	</build>
 
 </project>

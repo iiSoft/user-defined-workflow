@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -15,11 +15,10 @@ import com.sctrcd.buspassws.facts.AdultBusPass;
 import com.sctrcd.buspassws.facts.BusPass;
 import com.sctrcd.buspassws.facts.ChildBusPass;
 import com.sctrcd.buspassws.facts.Person;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = BusPassApp.class)
+@WebAppConfiguration
 public class BusPassWebServiceTest {
 
     @Autowired

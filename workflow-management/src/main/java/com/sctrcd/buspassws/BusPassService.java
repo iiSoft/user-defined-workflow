@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.kie.api.KieServices;
 import org.kie.api.definition.KiePackage;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -28,8 +27,7 @@ public class BusPassService {
     @Autowired
     public BusPassService(KieContainer kieContainer) {
         log.info("Initialising a new bus pass session.");
-//        this.kieContainer = kieContainer;
-        this.kieContainer = KieServices.Factory.get().getKieClasspathContainer();
+        this.kieContainer = kieContainer;
     }
 
     /**
@@ -48,7 +46,7 @@ public class BusPassService {
     /**
      * Search the {@link KieSession} for bus passes.
      */
-    public BusPass findBusPass(KieSession kieSession) {
+    BusPass findBusPass(KieSession kieSession) {
         
         // Find all BusPass facts and 1st generation child classes of BusPass.
         ObjectFilter busPassFilter = new ObjectFilter() {

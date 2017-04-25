@@ -24,27 +24,23 @@ import com.sctrcd.buspassws.facts.Person;
 public class BusPassApp {
 
 	private static Logger log = LoggerFactory.getLogger(BusPassApp.class);
-	
 
     public static void main(String[] args) {
-    	KieServices kieServices;
-        KieContainer kieContainer;
-        KieSession kieSession = null;
-        
         ApplicationContext ctx = SpringApplication.run(BusPassApp.class, args); 
-        /*
-        String[] beanNames = ctx.getBeanDefinitionNames();
+
+/*        String[] beanNames = ctx.getBeanDefinitionNames();
         Arrays.sort(beanNames);
 
         StringBuilder sb = new StringBuilder("Application beans:\n");
         for (String beanName : beanNames) {
             sb.append(beanName + "\n");
         }
-        log.info(sb.toString());
+        log.info(sb.toString());*/
         
-        if (kieSession != null) {
-            kieSession.dispose();
-        }*/
+        KieServices kieServices;
+        KieContainer kieContainer;
+        KieSession kieSession = null;
+        
         kieServices = KieServices.Factory.get();
         kieContainer = kieServices.getKieClasspathContainer();
         kieSession = kieContainer.newKieSession("BusPassSession");
