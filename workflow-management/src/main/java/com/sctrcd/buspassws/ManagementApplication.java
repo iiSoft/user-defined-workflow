@@ -1,4 +1,4 @@
-package com.xicoder.workflow.manage;
+package com.sctrcd.buspassws;
 
 import java.util.Arrays;
 
@@ -19,7 +19,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
-import com.xicoder.workflow.manage.ManagementApplication;
 
 @ConfigurationProperties(prefix="spring.http.multipart",
 ignoreUnknownFields=false)
